@@ -18,6 +18,7 @@ class Usuario:
         self.nickname = nickname
         self.senha = senha
 
+# lista de usuarios
 usuario1 = Usuario("Bruno Divino", "BD", "alohomora")
 usuario2 = Usuario("Camila Ferreira", "Mila", "paozinho")
 usuario3 = Usuario("Guilherme Louro", "Cake", "python_eh_vida")
