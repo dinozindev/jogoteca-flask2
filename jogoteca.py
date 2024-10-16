@@ -6,6 +6,7 @@ class Jogo:
         self.categoria=categoria
         self.console=console
 
+# lista de jogos
 jogo1 = Jogo('Tetris', 'Puzzle', 'Atari')
 jogo2 = Jogo('Skyrim', 'Aventura', 'PC')
 jogo3 = Jogo('God Of War', 'Rack n Slash', 'PS2')
