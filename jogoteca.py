@@ -1,3 +1,8 @@
+#Flask==3.0.3
+#mysql-connector-python==8.0.28
+#Flask-SQLAlchemy==3.0.3
+#Flask-WTF==1.0.0
+#Flask-Bcrypt==1.0.1
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
