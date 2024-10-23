@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, session, flash, url_for, send_from_directory
 from jogoteca import app, db
-from models import Jogos, Usuarios
-from helpers import recupera_imagem, deleta_arquivo, FormularioJogo, FormularioUsuario
+from models import Jogos 
+from helpers import recupera_imagem, deleta_arquivo, FormularioJogo
 import time
 
 @app.route('/')
@@ -111,35 +111,7 @@ def deletar(id):
 
     return redirect(url_for('index'))
 
-# pega os args da requisição /login e armazena na variável proxima, que será armazenada em value do input da página login.html
-@app.route('/login')
-def login():
-    proxima = request.args.get('proxima')
-    form = FormularioUsuario()
-    return render_template('login.html', proxima=proxima, form=form)
-
-# recebe o valor de proxima do input de login.html e faz o redirect concatenando, que nesse caso o resultado será "/novo"
-@app.route('/autenticar', methods=['POST',])
-def autenticar():
-    # pega os valores submetidos no formulario e armazena na variavel
-    form = FormularioUsuario(request.form)
-    # No BD, procura o primeiro usuario que tiver o nickname igual ao nickname fornecido no formulário
-    usuario = Usuarios.query.filter_by(nickname=form.nickname.data).first()
-    if usuario:
-        if  form.senha.data == usuario.senha:
-            session['usuario_logado'] = usuario.nickname
-            flash(usuario.nickname + ' logado com sucesso!')
-            proxima_pagina = request.form['proxima']
-            return redirect(proxima_pagina)
-    else:
-        flash('Usuário não logado.')
-        return redirect(url_for('login'))  
-
-@app.route('/logout') 
-def logout():
-    session['usuario_logado'] = None
-    flash('Logout efetuado com sucesso!')
-    return redirect(url_for('index')) 
+ 
 
 @app.route(f'/uploads/<nome_arquivo>')
 def imagem(nome_arquivo):
